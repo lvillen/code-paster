@@ -10,14 +10,15 @@ export const root = css`
   grid-column-gap: 1rem;
   grid-template-columns: auto 1fr;
   grid-template-areas:
-    'label label'
-    'textarea textarea'
-    'undo send';
+    'label label download'
+    'textarea textarea textarea'
+    'undo send send';
 `;
 
 export const label = css`
   grid-area: label;
-  display: block;
+  display: flex;
+  align-items: center;
   font-size: 1.125rem;
   font-family: ${typography.fontFamily};
 `;
@@ -88,6 +89,36 @@ export const undoButton = css`
   text-transform: capitalize;
   color: ${color.alertLight};
   background-color: white;
+  border-radius: 0;
+  border: 2px solid ${color.alertLight};
+  transition: all 0.2s;
+  &:hover,
+  &:active {
+    color: white;
+    background-color: ${color.alertLight};
+    border: 2px solid ${color.alertLight};
+    outline: none;
+  }
+  @media (max-width: ${breakpoints.values.xs}px) {
+    color: white;
+    background-color: ${color.alertLight};
+    border: none;
+    &:hover,
+    &:active {
+      background-color: ${color.alertDark};
+      border: none;
+    }
+  }
+`;
+
+export const downloadButton = css`
+  grid-area: download;
+  padding: ${spacing(1.25)} ${spacing(1.875)};
+  font-size: 1.188rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: black;
+  background-color: #d9d900;
   border-radius: 0;
   border: 2px solid ${color.alertLight};
   transition: all 0.2s;

@@ -24,6 +24,10 @@ const handleSetSessionContent = (sessionContent: string) => {
   sessionTextArea ? (sessionTextArea.value = sessionContent) : undefined;
 };
 
+const handleDownloadButton = () => {
+  console.log('Estoy funcionando');
+}
+
 const getFullContent = (currenSessionContent: string) => {
   const sessionTextArea: HTMLInputElement = getTextArea('session');
   return sessionTextArea && sessionTextArea.value != currenSessionContent
@@ -46,6 +50,16 @@ export const SessionComponent: React.FC<Props> = props => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
+
+      <Button
+        variant="contained"
+        color="secondary"
+        disableElevation
+        className={innerClasses.downloadButton}
+        onClick={handleDownloadButton}
+      >
+        Download
+      </Button>
 
       <TextareaAutosize
         ref={textAreaRef}
@@ -84,6 +98,7 @@ export const SessionComponent: React.FC<Props> = props => {
         Send Full Content
         <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
       </Button>
+
     </form>
   );
 };
